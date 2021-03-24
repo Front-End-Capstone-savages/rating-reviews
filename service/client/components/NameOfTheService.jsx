@@ -4,29 +4,41 @@ import Rating from "react-rating";
 import { ProgressBar } from 'react-bootstrap';
 
 
+
 export default class StarRating extends React.Component{
   constructor() {
     super();
 
     this.state = {
-        rating1:0,
-        setRating1:0,
+        rating1:0
+        
         
     };
+    this.change = this.change.bind(this);
    
   }
+  change(rating1) {
+    this.setState({ rating1 });
+  }
+  
 
   render(){
+    
    return (
+   
         <div className="left-container">
+           
+          <strong>RATING&REVIEWS</strong>
             <div className="star-rating">
-                <Rating
-                    fractions={2}
-                    initialRating={ 3.5+this.state.rating1}  
-                />
-                 <strong>100% of reviews recommend this product </strong>
+             <Rating  fractions={2}  initialRating={ 3.5 +this.state.rating1}   onClick={(i) => this.change(i + 1)}/>  
+                <p>
+          {this.state.rating1}  stars
+        </p>
+                  
+                  
                  <div className="progbar">
-                <div>
+                 <strong>100% of reviews recommend this product</strong>  
+                <div className="bar1">
                     <ProgressBar striped variant="dark" now={60} />
                     <strong className='index'>4 stars</strong>
                </div>
@@ -87,6 +99,7 @@ export default class StarRating extends React.Component{
                 <div className="slidecontainer">
                     <p className='sliderP'>Size</p>
                     <input type="range" min="1" max="100" className="slider" id="myRange"></input>
+                    
                 </div>
                 <br/>
                 <div className="slidecontainer">
