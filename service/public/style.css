@@ -1,1 +1,36 @@
-.progbar{width:50%}
+.progbar{width:20%;}
+.list1{ text-align: center;
+     
+    }
+    .count{
+        position: relative;
+        right: 60px;
+        top:60px;
+        font-size: 50px;
+
+    }
+    .start{
+        position: relative;
+        left: 80px;
+
+    }
+    .render1{position: relative;
+        left: 200px;
+
+    }
+.list{ position: relative;
+    left: 300px;
+   
+    
+   };
+   .progbar{position: relative;
+    right: 200px;}
+    .str{right: 28%;
+        position: relative;}
+        .use{
+            position: relative;
+            left: 30%;
+        }
+        .line{right: 38%;
+            position: relative;}
+    
