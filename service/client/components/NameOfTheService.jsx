@@ -21,6 +21,7 @@ export default class StarRating extends React.Component{
     };
     this.change = this.change.bind(this);
    
+   
   }
   change(rating1) {
     this.setState({ [this.state.data.count]:rating1 });// fix it pixa it's missing something :p Houda passed by here :)
@@ -40,6 +41,7 @@ export default class StarRating extends React.Component{
           console.log(err.message)
       })
   }
+ 
 
   render(){
     
@@ -103,6 +105,7 @@ export default class StarRating extends React.Component{
                     <p className='sliderP1'>Comfort</p>
                     <input type="range" min="1" max="100" className="slider1" id="myRange"  ></input>
                 </div>
+                
             </div>
         </div>
     )

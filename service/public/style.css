@@ -11,14 +11,14 @@
     }
     .start{
         position: relative;
-        left: 80px;
+        right: 30px;
 
     }
     .render1{position: relative;
         left: 200px;
 
     }
-.list{ position: relative;
+.container{ position: relative;
     left: 300px;
     transition: 0.3s;
     width: 30%;

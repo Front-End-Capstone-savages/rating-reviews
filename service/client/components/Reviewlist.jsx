@@ -8,8 +8,12 @@ export default class ListReview extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            list:[],     
+            list:[],
+            addreview:'hidden'  
         }
+        this.addrerevies=this.addrerevies.bind(this)
+        this.addsomreviews=this.addsomreviews.bind(this)
+
     }
     componentDidMount() {
       this.getReviewsDataFromAPi()
@@ -26,6 +30,23 @@ export default class ListReview extends React.Component {
             console.log(err.message)
         })
     }
+    addrerevies(){
+      this.setState({addreview:'shown'})
+    }
+    addsomreviews(){
+      axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11001`, {headers:{
+          'Authorization': `${TOKEN}`
+  
+      }})
+      .then((res)=> {
+          this.setState({data:res.data})
+          console.log(res.data)
+      }).catch((err)=> {
+          console.log(err.message)
+      })
+  
+    }
+   
   render() {
     const ratingChanged = (newRating) => {
       console.log(newRating);
@@ -35,7 +56,7 @@ export default class ListReview extends React.Component {
       <div class="list">
         <div className="row">
           <div className="list1">
-            <strong className="str"> reviews, sorted by relevance</strong>
+            <strong className="str">   248 reviews, sorted by relevance</strong>
             <ReactStars
               activeColor="black"
               onChange={ratingChanged}
@@ -54,11 +75,9 @@ export default class ListReview extends React.Component {
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                 </svg>
               </i>
-              {this.state.list.map(e=> 
-              <p>{e.reviewer_name}</p>
-              )}
+              {this.state.list.length&&this.state.list[0].reviewer_name}, junuary 1,2019
             </p>
-            
+              {console.log('heyyyy',this.state.list.length&&this.state.list[0].body)}
             <div className="title">
               <strong>
                 Review title with word-break truncation to prevent wrapping onto
@@ -72,7 +91,11 @@ export default class ListReview extends React.Component {
              
             <div className='row reviews-buttons-space'>
      <button className='review-buttons-type' >More Reviews</button>
-         <button className='review-buttons-type'>Add A Review <span style={{marginLeft:'9px',fontSize:'22px'}}>+</span></button>
+         <button className='review-buttons-type' onClick={this.addrerevies}>Add A Review <span style={{marginLeft:'9px',fontSize:'22px'}}>+</span></button>
+         {this.state.addreview === 'shown'&&<div>
+           <textarea onChange={()=>this.state.list.length&&this.state.list[0].body} />
+           <button onClick={ this.addsomreviews=this.addsomreviews.bind(this)}>click</button>
+           </div>}
                                     </div>
           </div>
         </div>
