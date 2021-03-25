@@ -8,19 +8,16 @@ export default class ListReview extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            list:[],
-            
+            list:[],     
         }
-        
-        
     }
     componentDidMount() {
-        this.getReviewsDataFromAPi()
+      this.getReviewsDataFromAPi()
     }
+
     getReviewsDataFromAPi() {
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11001`, {headers:{
             'Authorization': `${TOKEN}`
-  
         }})
         .then((res)=> {
             this.setState({list:res.data.results})
@@ -29,25 +26,21 @@ export default class ListReview extends React.Component {
             console.log(err.message)
         })
     }
-    
   render() {
-    
-   
     const ratingChanged = (newRating) => {
       console.log(newRating);
     };
     return (
-        <div className='container one-Review-card'>
+        <div className='container'>
       <div class="list">
         <div className="row">
           <div className="list1">
             <strong className="str"> reviews, sorted by relevance</strong>
             <ReactStars
-                
               activeColor="black"
               onChange={ratingChanged}
               size={24}
-            />{" "}
+            />
             <p className="use">
               <i className="bi bi-check-circle-fill">
                 <svg
@@ -60,8 +53,10 @@ export default class ListReview extends React.Component {
                 >
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                 </svg>
-              </i>{" "}
-              {this.state.list.map((e,i)=>{ {console.log("ddddddd",e.reviewer_name)}})}junuary 1, 2019
+              </i>
+              {this.state.list.map(e=> 
+              <p>{e.reviewer_name}</p>
+              )}
             </p>
             
             <div className="title">
@@ -70,8 +65,11 @@ export default class ListReview extends React.Component {
                 the next...
               </strong>
               <p className="line">...line , if necessary</p>
+              <p className="text1">donut gammi bears gingerbread gummies chocolate.Ice cream apple pie tiramisu fruitcake chupa</p>
+              <p className="text2">chups icing apple pie. Lemon drops cake pudding pudding.</p>
                
-            </div>{" "}
+             helpful?<button type="button" className="btn btn-link Start-button-rating-tab"><u>yes</u> </button>(10)<button type="button" className="btn btn-link Start-button-rating-tab"><u>Report</u> </button></div>{" "}
+             
             <div className='row reviews-buttons-space'>
      <button className='review-buttons-type' >More Reviews</button>
          <button className='review-buttons-type'>Add A Review <span style={{marginLeft:'9px',fontSize:'22px'}}>+</span></button>

@@ -20,6 +20,8 @@
     }
 .list{ position: relative;
     left: 300px;
+    transition: 0.3s;
+    width: 30%;
    
     
    };
@@ -31,6 +33,20 @@
             position: relative;
             left: 30%;
         }
-        .line{right: 38%;
+        .line{right: 33%;
             position: relative;}
+            .fixed-top{ 
+                transition: 0.5s;
+                width: 50%;
+                left: 200px;
+                bottom:60px
+               
+               }
+               .star-rating{
+                   margin-top: -55px;}
+                   .sliderP{margin-top: -10px;}
+                   .slider1{margin-bottom: -40;
+                background-color: black;}
+                   .sliderP1{margin-top: -30px;}
+                
     

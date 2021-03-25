@@ -10,10 +10,11 @@ export default class App extends React.Component {
       <div className="App">
         <div className="render">
           <ListReview />
+          </div>
           <div className="render1">
             {" "}
             <StarRating />
-          </div>
+          
         </div>
       </div>
     );

@@ -93,15 +93,15 @@ export default class StarRating extends React.Component{
                 </div>
                 </div>
             <div>
-                <div className="bar">
+                <div className="bar1">
                     <p className='sliderP'>Size</p>
                     <input type="range" min="1" max="100" className="slider" id="myRange"></input>
                     
                 </div>
                 <br/>
                 <div className="bar">
-                    <p className='sliderP'>Comfort</p>
-                    <input type="range" min="1" max="100" className="slider" id="myRange" data-slider-handle="triangle" ></input>
+                    <p className='sliderP1'>Comfort</p>
+                    <input type="range" min="1" max="100" className="slider1" id="myRange"  ></input>
                 </div>
             </div>
         </div>
