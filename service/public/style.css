@@ -11,17 +11,20 @@
     }
     .start{
         position: relative;
-        right: 30px;
+        right: 0px;
 
     }
     .render1{position: relative;
-        left: 200px;
+        left: 300px;
 
     }
-.container{ position: relative;
+.container-fluid{ position: relative;
     left: 300px;
     transition: 0.3s;
-    width: 30%;
+    width: 40%;
+   
+  transition: 0.3s;
+    background: #fff;
    
     
    };
@@ -36,17 +39,56 @@
         .line{right: 33%;
             position: relative;}
             .fixed-top{ 
-                transition: 0.5s;
-                width: 50%;
-                left: 200px;
+                transition: 0.90s;
+                width: 45%;
+                left: 100px;
                 bottom:60px
                
                }
                .star-rating{
-                   margin-top: -55px;}
+                   margin-top: -55px;
+                    right: 30px; 
+                    box-sizing: border-box; }
+
                    .sliderP{margin-top: -10px;}
                    .slider1{margin-bottom: -40;
                 background-color: black;}
                    .sliderP1{margin-top: -30px;}
+                   @media only screen and (min-width: 768px) {
+                    /* For desktop: */
+                    .col-1 {width: 8.33%;}
+                    .col-2 {width: 16.66%;}
+                    .col-3 {width: 25%;}
+                    .col-4 {width: 33.33%;}
+                    .col-5 {width: 41.66%;}
+                    .col-6 {width: 50%;}
+                    .col-7 {width: 58.33%;}
+                    .col-8 {width: 66.66%;}
+                    .col-9 {width: 75%;}
+                    .col-10 {width: 83.33%;}
+                    .col-11 {width: 91.66%;}
+                    .col-12 {width: 100%;}
+                  }
+                  @media only screen and (min-width: 600px) {
+                    /* For tablets: */
+                    .col-s-1 {width: 8.33%;}
+                    .col-s-2 {width: 16.66%;}
+                    .col-s-3 {width: 25%;}
+                    .col-s-4 {width: 33.33%;}
+                    .col-s-5 {width: 41.66%;}
+                    .col-s-6 {width: 50%;}
+                    .col-s-7 {width: 58.33%;}
+                    .col-s-8 {width: 66.66%;}
+                    .col-s-9 {width: 75%;}
+                    .col-s-10 {width: 83.33%;}
+                    .col-s-11 {width: 91.66%;}
+                    .col-s-12 {width: 100%;}
+                  }
+                  .App{box-sizing: border-box;}
+                  .rep{color: black;}
+                  .yes{color: black;}
+                  .njoum{color: black;}
+                  .bar1{color: black;}
+                  .slider{color: black;}
                 
     
