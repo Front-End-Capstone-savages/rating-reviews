@@ -11,15 +11,44 @@ export default class ListReview extends React.Component {
       list: [],
       addreview: "hidden",
       revlist: 2,
+      help:0,
+      retport:'Report'
       
     };
     this.addrerevies = this.addrerevies.bind(this);
     this.addsomreviews = this.addsomreviews.bind(this);
     this.putHelpfuls=this.putHelpfuls.bind(this)
+    this.updatHelpfuness=this.updatHelpfuness.bind(this)
+    this.report=this.report.bind(this)
   }
   componentDidMount() {
     this.getReviewsDataFromAPi();
     this.getimage()
+  }
+  updatHelpfuness(){
+    this.setState({help:this.state.help +1})
+  }
+  reporty(){
+    this.setState({retport:'Rported'})
+  }
+  report(id){
+    axios
+    .put(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/${id}/report`,this.state.retport,
+      {
+        headers: {
+          Authorization: `${TOKEN}`,
+        },
+      }
+    ).then((res)=>{
+      console.log('my put request : => ',res)
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
+  componentDidUpdate(){
+    this.putHelpfuls()
+
   }
 
 getimage(){
@@ -41,23 +70,22 @@ getimage(){
       });
 
 }
-putHelpfuls(){
+putHelpfuls(id){
+
   axios
       .put(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/${this.state.list.review_id}/helpful`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/${id}/helpful`,this.state.help,
         {
           headers: {
             Authorization: `${TOKEN}`,
           },
         }
-      )
-      .then(() => {
-        this.setState({ [this.state.list.helpfulness]: this.state.list.helpfulness +1 });
-        console.log("help me", this.state.list.helpfulness);
+      ).then((res)=>{
+        console.log('my put request : => ',res)
+      }).catch((err)=>{
+        console.log(err)
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      
 
 }
 
@@ -100,14 +128,16 @@ putHelpfuls(){
         console.log(err.message);
       });
   }
-
+ 
   render() {
-    console.log(this.state.revlist);
+    console.log(this.state.list.review_id,'dfdfdfdf')
     const { list, revlist } = this.state;
     const rev = this.state.list.filter((e, i) => i < this.state.revlist);
 
     return (
+      
       <div className="container-fluid">
+        {console.log(list.helpfulness)}
         <div class="list">
           <div className="row">
             <div className="list1">
@@ -139,7 +169,7 @@ putHelpfuls(){
                     <button
                       type="button"
                       className="btn btn-link Start-button-rating-tab"
-                      onClick={this.putHelpfuls}
+                      onClick={()=>this.putHelpfuls(e.review_id)}
                     >
                       <u className="yes">yes</u>{" "}
                     </button>
@@ -147,8 +177,9 @@ putHelpfuls(){
                     <button
                       type="button"
                       className="btn btn-link Start-button-rating-tab"
+                      onClick={()=>this.report(e.review_id)}
                     >
-                      <u className="rep">Report</u>{" "}
+                      <u className="rep">{this.state.retport}</u>{" "}
                     </button>
                     <hr style={{ width: "100%", color: "black" }} />
                   </div>

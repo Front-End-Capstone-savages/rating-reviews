@@ -1,6 +1,6 @@
 .progbar{width:40%;
     position: relative;
-    left: 300px;
+    left: 200px;
 transition: 0.3s;}
 .list1{ text-align: center;
      
@@ -30,7 +30,7 @@ transition: 0.3s;}
     left: 300px;
     }
     .rangy{ position: relative;
-        left: 300px;}
+        left: 200px;}
     .render1{position: relative;
         left: 300px;
 
