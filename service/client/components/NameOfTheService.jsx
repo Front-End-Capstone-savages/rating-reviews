@@ -54,14 +54,15 @@ export default class StarRating extends React.Component{
          <div className="container-fluid">
         <div className="fixed-top">
            {console.log("mystate",this.state.data)}
-          <strong>RATING&REVIEWS</strong>
-        <div className="star-rating">  
+          <strong className="rt">RATING&REVIEWS</strong>
+         
             
            <div className="start"> 
            
            <p className="count">3.5</p>
+           <div className="test">
                <ReactStars  activeColor="black" onChange={ratingChanged} size={24}  fractions={2}     onClick={(i) => this.change(i +1)}/> 
-               
+               </div>
                </div>
              
                
@@ -71,7 +72,7 @@ export default class StarRating extends React.Component{
                  <div className="progbar" >
                      
                  
-                 <strong>100% of reviews recommend this product</strong>  
+                 <strong className="strong">100% of reviews recommend this product</strong>  
                  <div className="bar1">
                     <ProgressBar striped variant="dark" now={70} />
                     <button type="button" className="btn btn-link Start-button-rating-tab"><u className='njoum'>5 start</u> </button>
@@ -94,8 +95,8 @@ export default class StarRating extends React.Component{
                     <button type="button" className="btn btn-link Start-button-rating-tab"><u className='njoum'>1 start</u> </button>
                </div>
                 </div>
-                </div>
-            <div>
+                
+            <div className='rangy'>
                 <div className="bar1">
                     <p className='sliderP'>Size</p>
                     <input type="range" min="1" max="100" className="slider" id="myRange"></input>
