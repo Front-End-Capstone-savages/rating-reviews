@@ -30,7 +30,7 @@ export default class StarRating extends React.Component{
       this.getReviewsDataFromAPi()
   }
   getReviewsDataFromAPi() {
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11002`, {headers:{
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11005`, {headers:{
           'Authorization': `${TOKEN}`
 
       }})
@@ -44,7 +44,6 @@ export default class StarRating extends React.Component{
  
 
   render(){
-    
     
     const ratingChanged = (newRating) => {
         console.log(newRating);
@@ -61,7 +60,7 @@ export default class StarRating extends React.Component{
            
            <p className="count">3.5</p>
            <div className="test">
-               <ReactStars  activeColor="black" onChange={ratingChanged} size={24}  fractions={2}     onClick={(i) => this.change(i +1)}/> 
+               <ReactStars  activeColor="black" onChange={ratingChanged} size={24}  fractions={2}      onClick={(i) => this.change(i +1)}/> 
                </div>
                </div>
              
@@ -74,7 +73,7 @@ export default class StarRating extends React.Component{
                  
                  <strong className="strong">100% of reviews recommend this product</strong>  
                  <div className="bar1">
-                    <ProgressBar striped variant="dark" now={70} />
+                    <ProgressBar striped variant="dark" now={70}  />
                     <button type="button" className="btn btn-link Start-button-rating-tab"><u className='njoum'>5 start</u> </button>
                </div>
                 <div className="bar1">

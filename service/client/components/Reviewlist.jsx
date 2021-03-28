@@ -2,7 +2,11 @@ import React from "react";
 import ReactStars from "react-rating-stars-component";
 import TOKEN from "../config/config.js";
 import AddReview from "./AddReview.jsx";
+import Recommend from './Recommend.jsx';
+
+
 import axios from "axios";
+
 
 export default class ListReview extends React.Component {
   constructor(props) {
@@ -12,7 +16,8 @@ export default class ListReview extends React.Component {
       addreview: "hidden",
       revlist: 2,
       help:0,
-      retport:'Report'
+      retport:'Report',
+      value:''
       
     };
     this.addrerevies = this.addrerevies.bind(this);
@@ -31,6 +36,7 @@ export default class ListReview extends React.Component {
   reporty(){
     this.setState({retport:'Rported'})
   }
+
   report(id){
     axios
     .put(
@@ -54,7 +60,7 @@ export default class ListReview extends React.Component {
 getimage(){
   axios
       .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11005`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11015`,
         {
           headers: {
             Authorization: `${TOKEN}`,
@@ -92,7 +98,7 @@ putHelpfuls(id){
   getReviewsDataFromAPi() {
     axios
       .get(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11004`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11015`,
         {
           headers: {
             Authorization: `${TOKEN}`,
@@ -113,7 +119,7 @@ putHelpfuls(id){
   addsomreviews() {
     axios
       .post(
-        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11002`,
+        `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/?product_id=11015`,
         {
           headers: {
             Authorization: `${TOKEN}`,
@@ -133,7 +139,7 @@ putHelpfuls(id){
     console.log(this.state.list.review_id,'dfdfdfdf')
     const { list, revlist } = this.state;
     const rev = this.state.list.filter((e, i) => i < this.state.revlist);
-
+console.log("list", this.state.list)
     return (
       
       <div className="container-fluid">
@@ -147,7 +153,7 @@ putHelpfuls(id){
                     <strong className="str">
                       {list.length} reviews, sorted by relevance
                     </strong>
-                    <ReactStars activeColor="black" size={24} />
+                    <ReactStars activeColor="black" size={24}  value={e.rating}/>
                     <p className="use">
                       <i className="bi bi-check-circle-fill">
                         <svg
@@ -165,6 +171,10 @@ putHelpfuls(id){
                     </p>
                     <strong>{e.summary}</strong>
                     <p key={e.review_id}>{e.body}</p>
+                    <Recommend recommend={e.recommend} className="review-recommend" />
+                    <img src={e.photos.map(x=>x.url)} className="img" alt="..."></img>
+                    
+                    
                     helpful?
                     <button
                       type="button"
@@ -187,12 +197,22 @@ putHelpfuls(id){
               </div>{" "}
               <div className="input-group rounded">
   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-    aria-describedby="search-addon" />
+    aria-describedby="search-addon"  onChange={(x)=>{this.setState({value:x.target.value.toLowerCase()})}}/>
   <span className="input-group-text border-0" id="search-addon">
     <i className="fas fa-search"></i> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg>
   </span>
+  <div><ul>
+    {/* {this.state.list.filter(el=>{
+      el.body.toLowerCase().includes(this.state.value).map(s=>{<div>
+        <a>{s.body}</a>
+      </div>})
+      
+    })} */}
+    </ul>
+    
+  </div>
 </div>
               <div className="row reviews-buttons-space">
                 <button
@@ -215,6 +235,7 @@ putHelpfuls(id){
             </div>
           </div>
         </div>
+        
       </div>
     );
   }
