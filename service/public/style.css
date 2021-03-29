@@ -9,7 +9,7 @@ transition: 0.3s;}
         position: relative;}
     .count{
         position: relative;
-        right: 5px;
+        right: 35px;
         top:60px;
         font-size: 50px;
 
@@ -38,11 +38,17 @@ transition: 0.3s;}
     .img{position: relative;
         border: 1px solid #ddd;
         border-radius: 4px;
-        padding: 2px;
-        width: 100px;
+        padding: 1px;
+        width: 90px;
+        top: 50px;
+        right: 200px;
     }
-    
-.container-fluid{ position: relative;
+    @media only screen and (min-width: 768px){ .fixed-top{
+        transition: 0.3s;
+        width: 0%;
+
+    }}
+    @media only screen and (min-width: 768px){.container-fluid{ position: relative;
     left: 300px;
     transition: 0.3s;
     width: 40%;
@@ -53,7 +59,7 @@ transition: 0.3s;}
    
     
    };
-  
+  }
     .str{right: 28%;
         position: relative;}
         .use{
@@ -63,6 +69,7 @@ transition: 0.3s;}
         .line{right: 33%;
             position: relative;}
             @media only screen and (min-width: 768px){.fixed-top{ 
+                transition: 0.3s;
                 transition: 0.90s;
                 width: 45%;
                 left: 100px;

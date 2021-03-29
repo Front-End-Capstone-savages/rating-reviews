@@ -17,7 +17,8 @@ export default class ListReview extends React.Component {
       revlist: 2,
       help:0,
       retport:'Report',
-      value:''
+      value:'',
+      filterData:[]
       
     };
     this.addrerevies = this.addrerevies.bind(this);
@@ -25,6 +26,7 @@ export default class ListReview extends React.Component {
     this.putHelpfuls=this.putHelpfuls.bind(this)
     this.updatHelpfuness=this.updatHelpfuness.bind(this)
     this.report=this.report.bind(this)
+    this.reporty = this.reporty.bind(this)
   }
   componentDidMount() {
     this.getReviewsDataFromAPi();
@@ -34,7 +36,7 @@ export default class ListReview extends React.Component {
     this.setState({help:this.state.help +1})
   }
   reporty(){
-    this.setState({retport:'Rported'})
+    this.setState({retport:'Reported!'})
   }
 
   report(id){
@@ -69,6 +71,7 @@ getimage(){
       )
       .then((res) => {
         this.setState({ list: res.data.results });
+        this.setState({filterData:res.data.results})
         console.log("statemeeee", res.data.results);
       })
       .catch((err) => {
@@ -76,6 +79,8 @@ getimage(){
       });
 
 }
+
+
 putHelpfuls(id){
 
   axios
@@ -153,7 +158,9 @@ console.log("list", this.state.list)
                     <strong className="str">
                       {list.length} reviews, sorted by relevance
                     </strong>
+                    
                     <ReactStars activeColor="black" size={24}  value={e.rating}/>
+
                     <p className="use">
                       <i className="bi bi-check-circle-fill">
                         <svg
@@ -183,13 +190,13 @@ console.log("list", this.state.list)
                     >
                       <u className="yes">yes</u>{" "}
                     </button>
-                    {e.helpfulness}
+                    ({e.helpfulness})
                     <button
                       type="button"
                       className="btn btn-link Start-button-rating-tab"
                       onClick={()=>this.report(e.review_id)}
                     >
-                      <u className="rep">{this.state.retport}</u>{" "}
+                      <u className="rep" onClick={()=>this.reporty()}>{this.state.retport}</u>{" "}
                     </button>
                     <hr style={{ width: "100%", color: "black" }} />
                   </div>
@@ -197,21 +204,29 @@ console.log("list", this.state.list)
               </div>{" "}
               <div className="input-group rounded">
   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-    aria-describedby="search-addon"  onChange={(x)=>{this.setState({value:x.target.value.toLowerCase()})}}/>
+    aria-describedby="search-addon"  onChange={(x)=>{this.setState({value:x.target.value})}}/>
   <span className="input-group-text border-0" id="search-addon">
     <i className="fas fa-search"></i> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg>
   </span>
-  <div><ul>
-    {/* {this.state.list.filter(el=>{
-      el.body.toLowerCase().includes(this.state.value).map(s=>{<div>
-        <a>{s.body}</a>
-      </div>})
+  <div> 
+  { this.state.value.length >= 3 ?(<ul>
+    {this.state.list.filter((el)=> el.body.includes(this.state.value)).map((x=><div key={x.review_id}>
+        <a>{x.body}</a>
+        <a>{x.reviewer_name}</a>
+        <a>{x.summary}</a>
+      </div>
       
-    })} */}
-    </ul>
     
+    
+    ))}
+      </ul>
+      ) : (
+        ""
+      )  }
+     
+           
   </div>
 </div>
               <div className="row reviews-buttons-space">
