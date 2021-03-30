@@ -147,7 +147,7 @@ putHelpfuls(id){
 console.log("list", this.state.list)
     return (
       
-      <div className="container-fluid">
+      <div className="container">
         {console.log(list.helpfulness)}
         <div class="list">
           <div className="row">
@@ -159,7 +159,7 @@ console.log("list", this.state.list)
                       {list.length} reviews, sorted by relevance
                     </strong>
                     
-                    <ReactStars activeColor="black" size={24}  value={e.rating}/>
+                    <ReactStars activeColor="black" size={24}  edit={false} value={e.rating}/>
 
                     <p className="use">
                       <i className="bi bi-check-circle-fill">
@@ -193,7 +193,7 @@ console.log("list", this.state.list)
                     ({e.helpfulness})
                     <button
                       type="button"
-                      className="btn btn-link Start-button-rating-tab"
+                      className="btn"
                       onClick={()=>this.report(e.review_id)}
                     >
                       <u className="rep" onClick={()=>this.reporty()}>{this.state.retport}</u>{" "}

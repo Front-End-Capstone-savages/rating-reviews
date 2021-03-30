@@ -1,16 +1,12 @@
-.progbar{width:40%;
+.progbar{
     position: relative;
-    left: 200px;
+    
 transition: 0.3s;}
 .list1{ text-align: center;
      
     }
-    .list{top:50px;
-        position: relative;}
+
     .count{
-        position: relative;
-        right: 35px;
-        top:60px;
         font-size: 50px;
 
     }
@@ -18,20 +14,7 @@ transition: 0.3s;}
         left: 55px;
     }
 
-    .start{
-        position: relative;
-        left: 300px;
-    transition: 0.3s;
-    width: 40%;
-    top: -70px;
-
-    }
-    .rt{position: relative;
-    left: 300px;
-    }
-    .rangy{ position: relative;
-        left: 200px;}
-    .render1{position: relative;
+    .render1{
         left: 300px;
 
     }
@@ -45,10 +28,14 @@ transition: 0.3s;}
     }
     @media only screen and (min-width: 768px){ .fixed-top{
         transition: 0.3s;
-        width: 0%;
+       position: relative;
+       left:-200px;
+        
+      
 
     }}
-    @media only screen and (min-width: 768px){.container-fluid{ position: relative;
+    @media only screen and (min-width: 768px){.container-fluid{ position: absolute;
+        border-radius: 30px;
     left: 300px;
     transition: 0.3s;
     width: 40%;
@@ -71,9 +58,8 @@ transition: 0.3s;}
             @media only screen and (min-width: 768px){.fixed-top{ 
                 transition: 0.3s;
                 transition: 0.90s;
-                width: 45%;
-                left: 100px;
-                bottom:60px
+                bottom:60px;
+                border-radius: 30px;
                
                }}
                @media only screen and (min-width: 768px){.star-rating{
@@ -92,7 +78,8 @@ transition: 0.3s;}
                     
                   }
                   
-                  .App{box-sizing: border-box;}
+                  .App{box-sizing: border-box;
+                              }
                   .rep{color: black;}
                   .yes{color: black;}
                   .njoum{color: black;}

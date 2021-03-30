@@ -1,5 +1,6 @@
 import App from './App.jsx';
 import ReactDOM from 'react-dom'
-ReactDOM.render(  <App/>,  document.getElementById('app') );
+import React from 'react'
+ReactDOM.render(  <App/>,  document.getElementById('service1') );
 
-// window.App = App;
+window.App = App;

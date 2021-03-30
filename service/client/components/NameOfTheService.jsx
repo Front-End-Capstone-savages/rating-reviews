@@ -23,6 +23,7 @@ export default class StarRating extends React.Component{
         three:0,
         four:0,
         five:0,
+        start:null
 
         
     };
@@ -105,35 +106,28 @@ export default class StarRating extends React.Component{
     }
     const avg=(tot/toty).toFixed(2)
     
+    
  
 
    return (
        
-         <div className="container-fluid">
-             
-            
+         <div className="star">
+
         <div className="fixed-top">
-           
           <strong className="rt">RATING&REVIEWS</strong>
-         
-            
-           <div className="start"> 
+
+           <div className=" row start"> 
            
-           <p className="count">{stavg}</p>
-           <div className="test">
+           <p className="col-4 count">{stavg}</p>
+           <div className=" col-8 test">
            
-               <ReactStars  activeColor="black"  size={24}   values={stavg}  /> 
+               <ReactStars  activeColor="black"  size={24}   value={stavg} edit={false}  /> 
                {console.log("dali",parseInt(Object.values(this.state.rating)))}
                </div>
                </div>
-             
                {console.log(parseInt(this.state.rating[0]))}
-                
-                  
-                
                  <div className="progbar" >
-                     
-                 
+
                  <strong className="strong">{StarsPercentage}% of reviews recommend this product</strong>  
                  <div className="bar1">
                     <ProgressBar striped variant="dark"  now={this.start(5)}  />
